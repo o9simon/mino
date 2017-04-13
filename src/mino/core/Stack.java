@@ -47,14 +47,23 @@ public class Stack {
 			}
 			
 			if (isClear) {
-				//removeLine(y);
+				clearLine(y);
 			}
 		}
 	}
 	
-	private void removeLine(int y) {
-		for (int x = 0; x < GRID_WIDTH; x++) {
-			stack[y][x] = 'X';
+	private void clearLine(int y) {
+		char[] temp;
+		char[] old = stack[0];
+			
+		// line 0 becomes line 1
+		// line 1 becomes line 2
+		// line 2 becomes line 3
+		// ...
+		for (int i = 0; i < stack.length - 1; i++) {
+			temp = stack[i + 1];
+			stack[i + 1] = old;
+			old = temp;
 		}
 	}
 
